@@ -2,11 +2,68 @@ package nl.qweenink.adventofcode2023
 
 import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
-import org.springframework.boot.test.context.SpringBootTest
 
-class Adventofcode2023ApplicationTests {
+class Day1 {
 
-    var data = """hcpjssql4kjhbcqzkvr2fivebpllzqbkhg
+    @Test
+    fun puzzle1() {
+        var sum = 0
+        data.split(System.getProperty("line.separator")).stream().forEach { line ->
+            val digits = line.toCharArray()
+                    .filter { it.isDigit() }
+            sum += (digits.first().toString() + digits.last().toString()).toInt()
+        }
+        println(sum)
+    }
+
+    @Test
+    fun puzzle2() {
+        var sum = 0
+        val numbers = arrayOf(Pair("one", 1), Pair("two", 2), Pair("three", 3), Pair("four", 4), Pair("five", 5),
+                Pair("six", 6), Pair("seven", 7), Pair("eight", 8), Pair("nine", 9),)
+        data.split(System.getProperty("line.separator")).stream().forEach { line ->
+            var minIndex = Int.MAX_VALUE
+            var minValue = 0
+            for((index, value) in line.toCharArray().withIndex()) {
+                if(value.isDigit()) {
+                    minIndex = index
+                    minValue = value.toString().toInt()
+                    break
+                }
+                numbers.forEach {
+                    val numberIndex = line.indexOf(it.first, index)
+                    if (numberIndex < minIndex && numberIndex != -1 && numberIndex == index) {
+                        minIndex = numberIndex
+                        minValue = it.second
+                    }
+                }
+                if(minValue != 0) {
+                    break
+                }
+            }
+
+            var maxIndex = Int.MIN_VALUE
+            var maxValue = 0
+            for((index, value) in line.substring(minIndex, line.length).toCharArray().withIndex()) {
+                if(value.isDigit()) {
+                    maxIndex = index + minIndex
+                    maxValue = value.toString().toInt()
+                }
+                numbers.forEach {
+                    val numberIndex = line.indexOf(it.first, index + minIndex)
+                    if (numberIndex > maxIndex && numberIndex != -1) {
+                        maxIndex = numberIndex
+                        maxValue = it.second
+                    }
+                }
+            }
+
+            sum += (minValue.toString() + maxValue.toString()).toInt()
+        }
+        println(sum)
+    }
+
+    private var data = """hcpjssql4kjhbcqzkvr2fivebpllzqbkhg
 4threethreegctxg3dmbm1
 1lxk2hfmcgxtmps89mdvkl
 sixbfjblhsjr3
@@ -1006,28 +1063,5 @@ nine5fivecgfsbvbtsn57five7djxlclnfv
 2gzqrfldtlpeight3fivencmlmffivevqkhncfm
 7bbfbcvh6
 ffnrprtnine1tjznmckv5sixczv"""
-
-    @Test
-    @Disabled
-    fun puzzel1() {
-        var sum = 0
-        data.split(System.getProperty("line.separator")).stream().forEach { line ->
-            val digits = line.toCharArray()
-                    .filter { it.isDigit() }
-            sum += (digits.first().toString() + digits.last().toString()).toInt()
-        }
-        println(sum)
-    }
-
-    fun puzzel2() {
-        var sum = 0
-        val numbers = arrayOf(Pair("one", 1))
-        data.split(System.getProperty("line.separator")).stream().forEach { line ->
-            val digits = line.toCharArray()
-                    .filter { it.isDigit() }
-            sum += (digits.first().toString() + digits.last().toString()).toInt()
-        }
-        println(sum)
-    }
 
 }
