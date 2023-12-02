@@ -16,14 +16,13 @@ class Day2 {
                                 .split(",")
                                 .map { it2 -> it2.trim().split(" ") }
                     }
-            var maxRed = Integer.MIN_VALUE;
-            var maxGreen = Integer.MIN_VALUE;
-            var maxBlue = Integer.MIN_VALUE;
+            var maxRed = Integer.MIN_VALUE
+            var maxGreen = Integer.MIN_VALUE
+            var maxBlue = Integer.MIN_VALUE
             inputs.forEach { subset ->
                 subset.forEach { cubes ->
-                    var number = cubes.first().toInt();
-                    var color = cubes.last();
-                    when (color) {
+                    val number = cubes.first().toInt()
+                    when (cubes.last()) {
                         "red" -> if (maxRed < number) maxRed = number
                         "green" -> if (maxGreen < number) maxGreen = number
                         "blue" -> if (maxBlue < number) maxBlue = number
@@ -48,14 +47,13 @@ class Day2 {
                                 .split(",")
                                 .map { it2 -> it2.trim().split(" ") }
                     }
-            var maxRed = Integer.MIN_VALUE;
-            var maxGreen = Integer.MIN_VALUE;
-            var maxBlue = Integer.MIN_VALUE;
+            var maxRed = Integer.MIN_VALUE
+            var maxGreen = Integer.MIN_VALUE
+            var maxBlue = Integer.MIN_VALUE
             inputs.forEach { subset ->
                 subset.forEach { cubes ->
-                    var number = cubes.first().toInt();
-                    var color = cubes.last();
-                    when (color) {
+                    val number = cubes.first().toInt()
+                    when (cubes.last()) {
                         "red" -> if (maxRed < number) maxRed = number
                         "green" -> if (maxGreen < number) maxGreen = number
                         "blue" -> if (maxBlue < number) maxBlue = number
