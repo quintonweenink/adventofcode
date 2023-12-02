@@ -11,22 +11,26 @@ class Day2 {
             val gameId = line.split(":").first().split(" ").last().toInt()
             val inputs = line.split(":").last()
                     .split(";")
-                    .map { it.trim()
-                            .split(",")
-                            .map { it2 -> it2.trim().split(" ") } }
+                    .map {
+                        it.trim()
+                                .split(",")
+                                .map { it2 -> it2.trim().split(" ") }
+                    }
             var maxRed = Integer.MIN_VALUE;
             var maxGreen = Integer.MIN_VALUE;
             var maxBlue = Integer.MIN_VALUE;
-            inputs.forEach { subset -> subset.forEach { cubes ->
-                var number = cubes.first().toInt();
-                var color = cubes.last();
-                when(color) {
-                    "red" -> if(maxRed < number) maxRed = number
-                    "green" -> if(maxGreen < number) maxGreen = number
-                    "blue" -> if(maxBlue < number) maxBlue = number
+            inputs.forEach { subset ->
+                subset.forEach { cubes ->
+                    var number = cubes.first().toInt();
+                    var color = cubes.last();
+                    when (color) {
+                        "red" -> if (maxRed < number) maxRed = number
+                        "green" -> if (maxGreen < number) maxGreen = number
+                        "blue" -> if (maxBlue < number) maxBlue = number
+                    }
                 }
-            } }
-            if(maxRed <= 12 && maxGreen <= 13 && maxBlue <= 14) {
+            }
+            if (maxRed <= 12 && maxGreen <= 13 && maxBlue <= 14) {
                 sum += gameId
             }
         }
@@ -39,21 +43,25 @@ class Day2 {
         data.split(System.getProperty("line.separator")).stream().forEach { line ->
             val inputs = line.split(":").last()
                     .split(";")
-                    .map { it.trim()
-                            .split(",")
-                            .map { it2 -> it2.trim().split(" ") } }
+                    .map {
+                        it.trim()
+                                .split(",")
+                                .map { it2 -> it2.trim().split(" ") }
+                    }
             var maxRed = Integer.MIN_VALUE;
             var maxGreen = Integer.MIN_VALUE;
             var maxBlue = Integer.MIN_VALUE;
-            inputs.forEach { subset -> subset.forEach { cubes ->
-                var number = cubes.first().toInt();
-                var color = cubes.last();
-                when(color) {
-                    "red" -> if(maxRed < number) maxRed = number
-                    "green" -> if(maxGreen < number) maxGreen = number
-                    "blue" -> if(maxBlue < number) maxBlue = number
+            inputs.forEach { subset ->
+                subset.forEach { cubes ->
+                    var number = cubes.first().toInt();
+                    var color = cubes.last();
+                    when (color) {
+                        "red" -> if (maxRed < number) maxRed = number
+                        "green" -> if (maxGreen < number) maxGreen = number
+                        "blue" -> if (maxBlue < number) maxBlue = number
+                    }
                 }
-            } }
+            }
             sum += maxRed * maxGreen * maxBlue
         }
         println(sum)
