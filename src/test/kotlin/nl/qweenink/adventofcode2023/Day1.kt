@@ -1,6 +1,5 @@
 package nl.qweenink.adventofcode2023
 
-import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 
 class Day1 {
@@ -20,7 +19,7 @@ class Day1 {
     fun puzzle2() {
         var sum = 0
         val numbers = arrayOf(Pair("one", 1), Pair("two", 2), Pair("three", 3), Pair("four", 4), Pair("five", 5),
-                Pair("six", 6), Pair("seven", 7), Pair("eight", 8), Pair("nine", 9),)
+                Pair("six", 6), Pair("seven", 7), Pair("eight", 8), Pair("nine", 9))
         data.split(System.getProperty("line.separator")).stream().forEach { line ->
             var minIndex = Int.MAX_VALUE
             var minValue = 0
