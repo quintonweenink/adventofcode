@@ -1,9 +1,6 @@
 package nl.qweenink.adventofcode2023
 
 import org.junit.jupiter.api.Test
-import java.lang.Math.pow
-import java.lang.RuntimeException
-import kotlin.math.abs
 import kotlin.math.pow
 
 class Day12 {
@@ -43,7 +40,6 @@ class Day12 {
                         .toIntArray()
                 if(resultGroups contentEquals row.second) {
                     workingCombinations++
-//                    println(String(result.toCharArray()))
                 }
             }
         }
