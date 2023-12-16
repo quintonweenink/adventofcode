@@ -1,7 +1,6 @@
 package nl.qweenink.adventofcode2023
 
 import org.junit.jupiter.api.Test
-import java.lang.Integer.min
 
 class Day14 {
 
